@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Map {
@@ -33,7 +34,10 @@ public class Map {
 		for(int i=0;i<wide;i++){
 			for(int j=0;j<length;j++){
 				if(carwl_row[i][j]==1){
-					System.out.print("--");
+					System.out.print(" -");
+				}
+				else{
+					System.out.print("  ");
 				}
 			}
 			System.out.println("");
@@ -55,16 +59,54 @@ public class Map {
 		}
 		for(int j=0;j<length;j++){
 			if(carwl_row[wide][j]==1){
-				System.out.print("--");
+				System.out.print(" -");
+			}
+			else{
+				System.out.print("  ");
 			}
 		}
 	}
 	public void createMap(){
-		
+		Scanner cin=new Scanner(System.in);
+		System.out.println("请输入坑的横纵坐标");
+		int x=-1;
+		int y=-1;
+		x=cin.nextInt();
+		y=cin.nextInt();
+		while(x!=-1||y!=-1){
+			land[x][y]=0;
+			x=cin.nextInt();
+			y=cin.nextInt();
+		}
+		System.out.println("请输入横向栏杆的横纵坐标");
+		x=-1;
+		y=-1;
+		x=cin.nextInt();
+		y=cin.nextInt();
+		while(x!=-1||y!=-1){
+			carwl_row[x][y]=1;
+			x=cin.nextInt();
+			y=cin.nextInt();
+		}
+		System.out.println("请输入纵向栏杆的横纵坐标");
+		x=-1;
+		y=-1;
+		x=cin.nextInt();
+		y=cin.nextInt();
+		while(x!=-1||y!=-1){
+			carwl_col[x][y]=1;
+			x=cin.nextInt();
+			y=cin.nextInt();
+		}
 	}
 	public static void main(String[] args) {
 		// TODO 自动生成的方法存根
-		Map map=new Map(3,4);
+		Scanner cin=new Scanner(System.in);
+		System.out.println("请输入地图的长与宽");
+		int len=cin.nextInt();
+		int wid=cin.nextInt();
+		Map map=new Map(wid,len);
+		map.createMap();
 		map.print();
 	}
 
